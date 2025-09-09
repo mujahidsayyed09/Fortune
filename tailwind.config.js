@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./*.html"], // adjust if your HTML files are in subfolders
+  content: ["./*.html"],
   theme: {
     extend: {
       colors: {
@@ -15,7 +15,8 @@ module.exports = {
         muted: 'hsl(210 40% 96%)',
         'muted-foreground': 'hsl(215.4 16.3% 46.9%)',
         border: 'hsl(214.3 31.8% 91.4%)',
-        'luxury-gold': 'hsl(43 96% 56%)'
+        'luxury-gold': 'hsl(43 96% 56%)',
+        newblue:'hsl(200 98 42)'
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif']
