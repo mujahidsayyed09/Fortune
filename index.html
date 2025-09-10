@@ -214,8 +214,6 @@
         </div>
     </header>
 
-
-
     <!-- Hero Section -->
     <section id="hero" class="bg-gradient-primary text-white py-20 relative overflow-hidden">
         <div class="absolute inset-0 bg-black/20"></div>
@@ -247,54 +245,70 @@
         </div>
     </section>
 
-    <!-- Trading Section -->
-    <section id="trading" class="relative py-20"
-        style="background-image: url('images/jewelryBg.png'); background-size: cover; background-position: center;">
+    <!-- Trading Section (horizontal galleries + lightbox) -->
+    <section id="trading" class="relative py-20">
         <!-- Overlay -->
-        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 bg-gray-300"></div>
+
+        <style>
+            /* subtle, thin horizontal scrollbar (customize colors if needed) */
+            .horizontal-scroll {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .horizontal-scroll::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            .horizontal-scroll::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            .horizontal-scroll::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.14);
+                border-radius: 9999px;
+            }
+        </style>
+
         <!-- Content -->
         <div class="relative container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white fade-in">
-                    Luxury <span style="color: hsl(200 98% 42%)">Jewelry Trading</span>
+            <div class="text-center mb-7">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-primary fade-in">
+                    Luxury <span class="text-sky-400">Jewelry Trading</span>
                 </h2>
-                <p class="text-sm text-gray-200 max-w-2xl mx-auto fade-in">
+                <p class="text-sm text-black max-w-2xl mx-auto fade-in">
                     Specializing in custom-made jewelry, gemstone trading, and luxury packaging solutions with global
                     reach.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div
-                    class="bg-white/90 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow fade-in">
+            <!-- Feature cards (kept compact and readable) -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white/90 border rounded-lg p-6 shadow-md hover:shadow-lg transition fade-in">
                     <div class="service-icon mb-4">💎</div>
                     <h3 class="text-lg font-bold mb-3 text-primary">Custom Jewelry</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
                         Unique designs crafted to match client preferences with expert craftsmanship.
                     </p>
                 </div>
-                <!-- Card 2 -->
-                <div
-                    class="bg-white/90 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow fade-in">
+
+                <div class="bg-white/90 border rounded-lg p-6 shadow-md hover:shadow-lg transition fade-in">
                     <div class="service-icon mb-4">💍</div>
                     <h3 class="text-lg font-bold mb-3 text-primary">Gemstone Trading</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        Premium precious and semi-precious colored stones from certified global suppliers.
+                        Premium precious and semi-precious stones from certified global suppliers.
                     </p>
                 </div>
-                <!-- Card 3 -->
-                <div
-                    class="bg-white/90 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow fade-in">
+
+                <div class="bg-white/90 border rounded-lg p-6 shadow-md hover:shadow-lg transition fade-in">
                     <div class="service-icon mb-4">📦</div>
                     <h3 class="text-lg font-bold mb-3 text-primary">Luxury Packaging</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
                         Custom-made jewelry boxes reflecting elegance and brand identity.
                     </p>
                 </div>
-                <!-- Card 4 -->
-                <div
-                    class="bg-white/90 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow fade-in">
+
+                <div class="bg-white/90 border rounded-lg p-6 shadow-md hover:shadow-lg transition fade-in">
                     <div class="service-icon mb-4">🛒</div>
                     <h3 class="text-lg font-bold mb-3 text-primary">Online Trading</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
@@ -302,8 +316,203 @@
                     </p>
                 </div>
             </div>
+
+            <!-- Galleries (each heading + horizontal scroller) -->
+            <div class="space-y-12">
+                <!-- Brand Jewelry On Orders -->
+                <div>
+                    <h3
+                        class="text-xl md:text-2xl font-bold mb-6 text-center font-[Cairo] text-primary drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] tracking-wider uppercase fade-in relative">
+                        Brand Jewelry On Orders
+                        <span class="block w-20 md:w-24 h-[2px] bg-primary mx-auto mt-2 rounded-full opacity-70"></span>
+                    </h3>
+                    <div class="horizontal-scroll overflow-x-auto -mx-4 px-4 py-4 bg-white rounded-lg">
+                        <div class="flex gap-4 items-start">
+                            <!-- images are fixed sizes (same ratio) and won't stretch -->
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl1Image/pic1.png" alt="Brand Jewelry 1">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl1Image/pic2.png" alt="Brand Jewelry 2">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl1Image/pic3.png" alt="Brand Jewelry 3">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl1Image/pic4.png" alt="Brand Jewelry 4">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl1Image/pic5.png" alt="Brand Jewelry 5">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl1Image/pic6.png" alt="Brand Jewelry 6">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl1Image/pic7.png" alt="Brand Jewelry 7">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl1Image/pic8.png" alt="Brand Jewelry 8">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl1Image/pic9.png" alt="Brand Jewelry 9">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl1Image/pic10.png" alt="Brand Jewelry 10">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jewelry, Gems & Jewelry Tools -->
+                <div>
+                    <h3
+                        class="text-xl md:text-2xl font-bold mb-6 text-center font-[Cairo] text-primary drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] tracking-wider uppercase fade-in relative">
+                        Jewelry, Gems & Jewelry Tools
+                        <span class="block w-20 md:w-24 h-[2px] bg-primary mx-auto mt-2 rounded-full opacity-70"></span>
+                    </h3>
+                    <div class="horizontal-scroll overflow-x-auto -mx-4 px-4 py-4 bg-white rounded-lg">
+                        <div class="flex gap-4 items-start">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl2Image/gem1.png" alt="gem 1">
+                            <img loading="lazy"
+                                class="gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl2Image/gem8.png" alt="gem 2">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl2Image/gem10.png" alt="gem 3">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl2Image/gem7.png" alt="gem 4">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl2Image/gem5.png" alt="Gem 5">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl2Image/gem6.png" alt="gem 6">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl2Image/gem9.png" alt="gem 7">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl2Image/gem2.png" alt="gem 8">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl2Image/gem3.png" alt="gem 9">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl2Image/gem4.png" alt="gem 10">
+                            <!-- duplicate or extra images can be added as needed -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Made on Order Pendant Sets -->
+                <div>
+                    <h3
+                        class="text-xl md:text-2xl font-bold mb-6 text-center font-[Cairo] text-primary drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] tracking-wider uppercase fade-in relative">
+                        Made on Order Pendant Sets
+                        <span class="block w-20 md:w-24 h-[2px] bg-primary mx-auto mt-2 rounded-full opacity-70"></span>
+                    </h3>
+                    <div class="horizontal-scroll overflow-x-auto -mx-4 px-4 py-4 bg-white rounded-lg">
+                        <div class="flex gap-4 items-start">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl3Image/pendant1.png" alt="Pendant 1">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl3Image/pendant2.png" alt="Pendant 2">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl3Image/pendant3.png" alt="Pendant 3">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl3Image/pendant4.png" alt="Pendant 4">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl3Image/pendant5.png" alt="Pendant 5">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl3Image/pendant6.png" alt="Pendant 6">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl3Image/pendant7.png" alt="Pendant 7">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl3Image/pendant8.png" alt="Pendant 8">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl3Image/pendant9.png" alt="Pendant 9">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl3Image/pendant10.png" alt="Pendant 10">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Name Pendants, Rings & Color Stones -->
+                <div>
+                    <h3
+                        class="text-xl md:text-2xl font-bold mb-6 text-center font-[Cairo] text-primary drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] tracking-wider uppercase fade-in relative">
+                        Name Pendants, Rings &
+                        Color Stones
+                        <span
+                            class="block w-20 md:w-24 h-[2px] bg-primary mx-auto mt-2 rounded-full opacity-70"></span>
+                    </h3>
+                    <div class="horizontal-scroll overflow-x-auto -mx-4 px-4 py-4 bg-white rounded-lg">
+                        <div class="flex gap-4 items-start">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl4Image/p1.png" alt="p1">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl4Image/p2.png" alt="p2">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl4Image/p3.png" alt="p3">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl4Image/p4.png" alt="p4">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl4Image/p5.png" alt="p5">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl4Image/p6.png" alt="p6">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl4Image/p7.png" alt="p7">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl4Image/p8.png" alt="p8">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl4Image/p9.png" alt="p9">
+                            <img loading="lazy"
+                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
+                                src="images/jewl4Image/p10.png" alt="p10">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Lightbox Modal (shared for all galleries) -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden z-50 flex items-center justify-center">
+        <!-- Close Button -->
+        <button aria-label="Close" class="absolute top-6 right-6 text-white text-3xl font-bold z-60"
+            onclick="closeLightbox()">x</button>
+        <!-- Prev / Next Controls -->
+        <button aria-label="Previous"
+            class="absolute left-6 top-1/2 -translate-y-1/2 text-white text-4xl font-bold z-60"
+            onclick="prevImage()">◀</button>
+        <button aria-label="Next" class="absolute right-6 top-1/2 -translate-y-1/2 text-white text-4xl font-bold z-60"
+            onclick="nextImage()">▶</button>
+        <!-- Image -->
+        <img id="lightbox-img" src="" alt="Preview" class="max-h-[80%] max-w-[90%] rounded-lg shadow-lg">
+    </div>
 
 
     <!-- Caviar Section -->
@@ -483,121 +692,208 @@
                     Client <span style="color: hsl(200 98 42)">Testimonials</span>
                 </h2>
                 <p class="text-sm text-gray-600 max-w-2xl mx-auto fade-in">
-                    Hear from our satisfied clients across business consultancy, jewelry trading, and premium caviar
-                    services.
+                    Hear from our satisfied clients across jewelry, consultancy, caviar trading, printing, and
+                    customized solutions.
                 </p>
             </div>
 
             <div class="relative max-w-4xl mx-auto">
                 <div class="overflow-hidden">
                     <div id="testimonials-slider" class="flex transition-transform duration-500 ease-in-out">
+
+                        <!-- Jewellery - Buta Jewellers -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
-                                <div class="flex justify-center mb-4">
-                                    <span class="text-yellow-400">★★★★★</span>
-                                </div>
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
                                 <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
-                                    "Fortune 53 helped us establish our jewelry business in Dubai Free Zone with
-                                    exceptional efficiency. Their recruitment services found us the perfect
-                                    Russian-speaking sales team and skilled goldsmiths. Highly professional service."
+                                    "Beautiful & unique designs, authentic quality, and durable pieces. Friendly staff,
+                                    fast communication, and timely delivery built our long-term trust."
                                 </blockquote>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-900">Ahmed Al-Mansouri</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Luxury Jewelry Boutique, Dubai</p>
-                                    <p class="text-xs text-newblue mt-1 font-medium">UAE</p>
+                                    <h4 class="text-sm font-semibold text-gray-900">Buta Jewellers</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Jewellery Trading</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Consultancy - Vello Doro Jew -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
-                                <div class="flex justify-center mb-4">
-                                    <span class="text-yellow-400">★★★★★</span>
-                                </div>
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
                                 <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
-                                    "The premium caviar quality from Fortune 53 is outstanding. Their strict quality
-                                    control and timely deliveries have made them our exclusive caviar supplier across
-                                    our restaurant chain in Europe."
+                                    "Exceptional service and tailored solutions. Efficient licensing, deep local
+                                    knowledge, and cost-effective packages made our expansion seamless."
                                 </blockquote>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-900">Marina Kozlova</h4>
-                                    <p class="text-xs text-gray-600 mt-1">European Fine Dining Group</p>
-                                    <p class="text-xs text-newblue mt-1 font-medium">Europe</p>
+                                    <h4 class="text-sm font-semibold text-gray-900">Vello Doro Jew</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Business Consultancy</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE | Moscow | Azerbaijan
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Jewellery Boxes - Malakain Jew -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
-                                <div class="flex justify-center mb-4">
-                                    <span class="text-yellow-400">★★★★★</span>
-                                </div>
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
                                 <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
-                                    "Working with Fortune 53 for custom jewelry and gemstone trading has been a
-                                    game-changer. Their attention to detail, transparent dealings, and premium packaging
-                                    solutions exceed expectations every time."
+                                    "The custom jewelry boxes exceeded expectations. Premium materials, velvet lining,
+                                    magnetic closure, and great attention to detail at an affordable price."
                                 </blockquote>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-900">James Richardson</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Gemstone Trading International</p>
-                                    <p class="text-xs text-newblue mt-1 font-medium">UK</p>
+                                    <h4 class="text-sm font-semibold text-gray-900">Malakain Jew</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Customized Jewelry Boxes</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Caviar - King Caviar -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
-                                <div class="flex justify-center mb-4">
-                                    <span class="text-yellow-400">★★★★★</span>
-                                </div>
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
                                 <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
-                                    "The business consultancy services provided by Fortune 53 were instrumental in our
-                                    successful UAE mainland company setup. From licensing to visa processing, everything
-                                    was handled professionally and efficiently."
+                                    "Altima’s Oscietra Gold Reserve is world-class. Golden tone, delicate pop, exquisite
+                                    nutty flavor, and consistent premium quality."
                                 </blockquote>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-900">Fatima Al-Zahra</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Middle East Business Ventures</p>
-                                    <p class="text-xs text-newblue mt-1 font-medium">UAE</p>
+                                    <h4 class="text-sm font-semibold text-gray-900">King Caviar</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Caviar Trading</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai Mall, UAE</p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Caviar - Kaspian Caviar -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
-                                <div class="flex justify-center mb-4">
-                                    <span class="text-yellow-400">★★★★★</span>
-                                </div>
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
                                 <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
-                                    "Fortune 53's jewelry trading services have consistently delivered exceptional
-                                    custom pieces for our Asian market. Their CAD designers and workshop staff expertise
-                                    is truly world-class."
+                                    "Consistently excellent caviar – glossy, rich, nutty flavor with perfect freshness.
+                                    Always delivered securely and on time."
                                 </blockquote>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-900">Chen Wei Ming</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Asian Luxury Imports</p>
-                                    <p class="text-xs text-newblue mt-1 font-medium">Singapore</p>
+                                    <h4 class="text-sm font-semibold text-gray-900">Kaspian Caviar</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Caviar Trading</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Printing - DUTCO International -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
-                                <div class="flex justify-center mb-4">
-                                    <span class="text-yellow-400">★★★★★</span>
-                                </div>
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
                                 <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
-                                    "As a luxury food distributor, we demand the finest quality caviar. Fortune 53
-                                    consistently delivers premium grade caviar with perfect packaging and certification.
-                                    Their reliability is unmatched."
+                                    "High-quality uniforms with comfort and customization options. Stylish brochures
+                                    that perfectly communicated our brand message."
                                 </blockquote>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-900">Isabella Rossi</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Gourmet Food Distribution</p>
-                                    <p class="text-xs text-newblue mt-1 font-medium">Italy</p>
+                                    <h4 class="text-sm font-semibold text-gray-900">DUTCO International</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Printing & Uniforms</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Printing - Caspian Jew -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
+                                <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
+                                    "Custom jewelry boxes and printing services enhanced our brand presence. The quality
+                                    and finishing were excellent."
+                                </blockquote>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-900">Caspian Jew LLC</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Jewelry & Printing</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Printing - Brilla Diamonds -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
+                                <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
+                                    "Customized packaging and printing that matched our luxury standards. High-quality
+                                    materials and professional service."
+                                </blockquote>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-900">Brilla Diamonds DMCC</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Printing & Packaging</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Printing - BZ Diamonds -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
+                                <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
+                                    "Affordable yet premium customized boxes and printing services. Great value without
+                                    compromising on quality."
+                                </blockquote>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-900">BZ Diamonds DMCC</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Printing & Packaging</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Consultancy - Annexsys -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
+                                <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
+                                    "Annexsys received seamless consultancy services with expert guidance on trading
+                                    setups. Professional and transparent."
+                                </blockquote>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-900">Annexsys Trading LLC</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Business Consultancy</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Consultancy - Brillianto Jew -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
+                                <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
+                                    "Brillianto Jew benefited from end-to-end consultancy – licensing, compliance, and
+                                    seamless business support."
+                                </blockquote>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-900">Brillianto Jew LLC</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Business Consultancy</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Sharjah, UAE</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Consultancy - MSK Star -->
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
+                                <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
+                                <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
+                                    "MSK Star Trading received reliable and efficient consultancy services, with
+                                    tailored solutions for smooth operations."
+                                </blockquote>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-900">MSK Star Trading LLC</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Business Consultancy</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -606,6 +902,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- FAQ Section -->
     <section id="faq" class="py-20 bg-white">
@@ -815,7 +1112,7 @@
                 <!-- Contact Info -->
                 <div class="space-y-10 fade-in">
                     <!-- Services -->
-                    <div class="grid md:grid-cols-3 gap-6">
+                    <div class="grid md:grid-rows-3 gap-6">
                         <!-- Consultancy -->
                         <div
                             class="bg-white/10 border border-white/20 rounded-lg p-6 text-center hover-lift hover-glow transition">
@@ -873,10 +1170,6 @@
                 <div class="text-xs md:text-sm opacity-60 mt-2">
                     UAE Business Setup • Luxury Jewelry Trading • Premium Caviar Import • Global Service Excellence
                 </div>
-                <div class="mt-2 text-xs opacity-50">
-                    © <span id="footer-year"></span> Fortune 53 General Trading LLC. All Rights Reserved.
-                    <span class="cairo-font">فورتشن فيفتي ثري للتجارة العامة ذ م م</span>
-                </div>
             </div>
 
             <!-- Contact Info -->
@@ -890,11 +1183,16 @@
             </div>
 
             <!-- Logo -->
-            <div class="flex justify-center md:justify-end mt-4 md:mt-0 flex-1">
+            <div class="flex flex-col items-center justify-center md:justify-end mt-4 md:mt-0 flex-1 text-center">
                 <img src="images/Logo.png" alt="Business Logo"
                     class="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain fade-in drop-shadow-[0_0_8px_white] cursor-pointer"
                     onclick="scrollToSection('hero')">
+                <div class="mt-2 text-xs opacity-50">
+                    © <span id="footer-year"></span> Fortune 53 General Trading LLC. All Rights Reserved. <br>
+                    <span class="cairo-font">فورتشن فيفتي ثري للتجارة العامة ذ م م</span>
+                </div>
             </div>
+
 
         </div>
     </footer>
@@ -903,6 +1201,62 @@
         // Auto-update footer year
         document.getElementById("footer-year").textContent = new Date().getFullYear();
     </script>
+
+    <!-- Lightbox Script (supports keyboard navigation) -->
+    <script>
+        (function () {
+            const items = Array.from(document.querySelectorAll('.gallery-item'));
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            let currentIndex = -1;
+            // Click to open lightbox
+            items.forEach((img, idx) => {
+                img.addEventListener('click', () => showLightbox(idx));
+            });
+            // Open by index or element
+            window.openLightbox = function (idxOrElem) {
+                if (typeof idxOrElem === 'number') {
+                    showLightbox(idxOrElem);
+                } else if (idxOrElem && idxOrElem.tagName === 'IMG') {
+                    const idx = items.indexOf(idxOrElem);
+                    if (idx >= 0) showLightbox(idx);
+                }
+            };
+            function showLightbox(index) {
+                currentIndex = index;
+                lightboxImg.src = items[currentIndex].src;
+                lightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+            window.closeLightbox = function () {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = '';
+                lightboxImg.src = '';
+            };
+            window.nextImage = function () {
+                if (items.length === 0) return;
+                currentIndex = (currentIndex + 1) % items.length;
+                lightboxImg.src = items[currentIndex].src;
+            };
+            window.prevImage = function () {
+                if (items.length === 0) return;
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                lightboxImg.src = items[currentIndex].src;
+            };
+            // Close on background click
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.classList.contains('hidden')) return;
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'Escape') closeLightbox();
+            });
+        })();
+    </script>
+
 
     <script>
         // Smooth scrolling
