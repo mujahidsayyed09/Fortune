@@ -16,6 +16,9 @@
     <link rel="canonical" href="https://fortune53.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/Logo.png">
+    <link rel="apple-touch-icon" href="images/Logo.png">
+
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -94,6 +97,7 @@
     </script>
 
     <link href="./dist/output.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -151,88 +155,148 @@
 
 <body class="bg-background text-foreground">
     <!-- Header -->
-    <header class="bg-gradient-primary text-white shadow-luxury  top-0 z-50">
-        <div class="container mx-auto px-6 py-3">
+    <header class="bg-gradient-primary text-white shadow-luxury sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
             <nav class="flex items-center justify-between">
                 <!-- Logo + Brand -->
                 <div class="flex items-center space-x-3 hover-lift cursor-pointer" onclick="scrollToSection('hero')">
                     <!-- Logo -->
                     <img src="images/Logo.png" alt="Business Logo"
-                        class="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 object-contain drop-shadow-[0_0_6px_white]">
+                        class="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 object-contain drop-shadow-[0_0_8px_white] brightness-150">
                     <!-- Text -->
                     <div class="flex flex-col">
                         <!-- Arabic Text -->
                         <span
-                            class="text-sm md:text-base font-bold tracking-tight font-[Cairo] leading-tight text-left md:text-left cairo-font">
+                            class="text-sm md:text-base font-bold tracking-tight font-[Cairo] leading-tight text-left cairo-font">
                             فورتشن فيفتي ثري للتجارة العامة ذ م م
                         </span>
                         <!-- Separator -->
                         <span class="w-full border-t border-white/40 my-1"></span>
-                        <!-- English Text (Responsive Layout) -->
+                        <!-- English Text -->
                         <div class="flex flex-col md:flex-row md:items-center md:space-x-2">
                             <!-- Fortune53 -->
                             <div class="text-base md:text-lg font-bold tracking-tight">
-                                Fortune<span style="color: hsl(0 75% 55%)">53</span>
+                                Fortune<span class="text-red-500 drop-shadow-md">53</span>
                             </div>
                             <!-- General Trading LLC -->
-                            <div class="text-xs md:text-sm font-medium opacity-90">
+                            <div class="text-xs md:text-sm font-medium opacity-90 tracking-wide">
                                 General Trading LLC
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Nav Links -->
-                <div class="hidden md:flex items-center space-x-6">
-                    <button onclick="scrollToSection('consultancy')"
-                        class="text-sm hover:text-red-400 transition-colors hover-lift">
-                        Consultancy
-                    </button>
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8">
                     <button onclick="scrollToSection('trading')"
-                        class="text-sm hover:text-red-400 transition-colors hover-lift">
-                        Trading
+                        class="text-sm font-medium hover:text-red-400 transition-colors hover-lift tracking-wide">
+                        Jewellery Trading
                     </button>
                     <button onclick="scrollToSection('caviar')"
-                        class="text-sm hover:text-red-400 transition-colors hover-lift">
+                        class="text-sm font-medium hover:text-red-400 transition-colors hover-lift tracking-wide">
                         Premium Caviar
                     </button>
+                    <button onclick="scrollToSection('consultancy')"
+                        class="text-sm font-medium hover:text-red-400 transition-colors hover-lift tracking-wide">
+                        Business Consultancy
+                    </button>
                     <button onclick="scrollToSection('faq')"
-                        class="text-sm hover:text-red-400 transition-colors hover-lift">
+                        class="text-sm font-medium hover:text-red-400 transition-colors hover-lift tracking-wide">
                         FAQ
                     </button>
                     <button onclick="scrollToSection('contact')"
-                        class="text-sm hover:text-red-400 transition-colors hover-lift">
+                        class="text-sm font-medium hover:text-red-400 transition-colors hover-lift tracking-wide">
                         Contact
                     </button>
                 </div>
 
-                <button onclick="scrollToSection('contact')"
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium hover-lift transition-colors">
-                    Get Started
+                <!-- Mobile Menu Button -->
+                <button id="menu-toggle"
+                    class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-white/40 hover:bg-white/10 transition">
+                    <!-- Icon -->
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
             </nav>
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="bg-gradient-primary text-white py-20 relative overflow-hidden">
+        <!-- Mobile Side Drawer -->
+        <div id="mobile-menu"
+            class="fixed rounded-lg top-0 right-0 h-auto w-auto bg-gradient-to-b from-primary to-primary/95 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-white/20">
+                <span class="text-lg font-bold text-red-500">Services</span>
+                <button id="menu-close" class="p-2 rounded hover:bg-white/10 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-6 p-6">
+                <button onclick="scrollToSection('trading')"
+                    class="text-sm font-medium hover:text-red-400 transition">Jewellery Trading</button>
+                <button onclick="scrollToSection('caviar')"
+                    class="text-sm font-medium hover:text-red-400 transition">Premium Caviar</button>
+                <button onclick="scrollToSection('consultancy')"
+                    class="text-sm font-medium hover:text-red-400 transition">Business Consultancy</button>
+                <button onclick="scrollToSection('faq')"
+                    class="text-sm font-medium hover:text-red-400 transition">FAQ</button>
+                <button onclick="scrollToSection('contact')"
+                    class="text-sm font-medium hover:text-red-400 transition">Contact</button>
+            </div>
+        </div>
+
+        <!-- Overlay (dim background) -->
+        <div id="overlay" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden z-40"></div>
+    </header>
+    <!-------Hamburger function-------------------->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            overlay.classList.remove('hidden');
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+    </script>
+
+
+    <!-- ---------------------------------------Hero Section -------------------------------------------------------------------------->
+    <section id="hero" class="bg-gradient-primary text-white py-20 relative overflow-hidden scroll-mt-24">
         <div class="absolute inset-0 bg-black/20"></div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center">
                 <!-- Business Logo -->
                 <div class="flex justify-center mb-4">
                     <img src="images/Logo.png" alt="Business Logo"
-                        class="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain fade-in drop-shadow-[0_0_8px_white]">
+                        class="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain fade-in drop-shadow-[0_0_8px_white] brightness-150">
+
                 </div>
                 <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 fade-in">
                     Excellence in Business <span style="color: hsl(200 98 42)">Solutions</span>
                 </h1>
                 <p class="text-sm md:text-base opacity-90 max-w-3xl mx-auto mb-8 fade-in">
-                    Fortune 53 General Trading LLC provides comprehensive business consultancy, luxury jewelry trading,
+                    Fortune 53 General Trading LLC provides comprehensive business consultancy, luxury jewellery
+                    trading,
                     and premium caviar importing services across the Middle East, Europe, and Asia.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in">
-                    <button onclick="scrollToSection('consultancy')"
+                    <button onclick="scrollToSection('trading')"
                         class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md font-medium hover-lift transition-colors">
                         Explore Services
                     </button>
@@ -245,28 +309,24 @@
         </div>
     </section>
 
-    <!-- Trading Section (horizontal galleries + lightbox) -->
-    <section id="trading" class="relative py-20">
+    <!---------------------------------------Jewllery Trading Section--------------------------------------------------------------- -->
+    <section id="trading" class="relative py-16 scroll-mt-24">
         <!-- Overlay -->
         <div class="absolute inset-0 bg-gray-100"></div>
-
         <style>
-            /* subtle, thin horizontal scrollbar (customize colors if needed) */
-            .horizontal-scroll {
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .horizontal-scroll::-webkit-scrollbar {
-                height: 8px;
-            }
-
             .horizontal-scroll::-webkit-scrollbar-track {
                 background: transparent;
             }
 
-            .horizontal-scroll::-webkit-scrollbar-thumb {
-                background: rgba(255, 255, 255, 0.14);
-                border-radius: 9999px;
+            .horizontal-scroll::-webkit-scrollbar {
+                display: none;
+            }
+
+            .horizontal-scroll {
+                -ms-overflow-style: none;
+                /* IE & Edge */
+                scrollbar-width: none;
+                /* Firefox */
             }
         </style>
 
@@ -274,21 +334,23 @@
         <div class="relative container mx-auto px-6">
             <div class="text-center mb-7">
                 <h2 class="text-2xl md:text-3xl font-bold mb-4 text-primary fade-in">
-                    Luxury <span class="text-sky-400">Jewelry Trading</span>
+                    Luxury <span class="text-sky-400">Jewellery Trading</span>
                 </h2>
                 <p class="text-sm text-black max-w-2xl mx-auto fade-in">
-                    Specializing in custom-made jewelry, gemstone trading, and luxury packaging solutions with global
+                    Specializing in custom-made jewellery, gemstone trading, and luxury packaging solutions with global
                     reach.
                 </p>
             </div>
 
-            <!-- Feature cards (kept compact and readable) -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <!-- Feature cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 <div class="bg-white/90 border rounded-lg p-6 shadow-md hover:shadow-lg transition fade-in">
                     <div class="service-icon mb-4">💎</div>
-                    <h3 class="text-lg font-bold mb-3 text-primary">Custom Jewelry</h3>
+                    <h3 class="text-lg font-bold mb-3 text-primary">Custom Jewellery</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
                         Unique designs crafted to match client preferences with expert craftsmanship.
+                        Each piece is tailored to reflect personal style, using premium materials and fine detailing.
+                        Perfect for special occasions or timeless everyday wear.
                     </p>
                 </div>
 
@@ -296,7 +358,9 @@
                     <div class="service-icon mb-4">💍</div>
                     <h3 class="text-lg font-bold mb-3 text-primary">Gemstone Trading</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        Premium precious and semi-precious stones from certified global suppliers.
+                        Premium precious and semi-precious stones sourced from certified global suppliers.
+                        Both certified and non-certified stones are available, giving clients the freedom to choose
+                        based on their preferences, needs, and budget.
                     </p>
                 </div>
 
@@ -305,194 +369,203 @@
                     <h3 class="text-lg font-bold mb-3 text-primary">Luxury Packaging</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
                         Custom-made jewelry boxes reflecting elegance and brand identity.
-                    </p>
-                </div>
-
-                <div class="bg-white/90 border rounded-lg p-6 shadow-md hover:shadow-lg transition fade-in">
-                    <div class="service-icon mb-4">🛒</div>
-                    <h3 class="text-lg font-bold mb-3 text-primary">Online Trading</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Secure online platforms for exquisite jewelry and gemstone transactions.
+                        Designed with premium materials and fine detailing to provide both protection and a luxurious
+                        presentation for every piece.
                     </p>
                 </div>
             </div>
 
             <!-- Galleries (each heading + horizontal scroller) -->
             <div class="space-y-12">
-                <!-- Brand Jewelry On Orders -->
-                <div>
+                <!--  jewllery Made On Orders -->
+                <div class="relative">
                     <h3
-                        class="text-xl md:text-2xl font-bold mb-6 text-center font-[Cairo] text-primary drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] tracking-wider uppercase fade-in relative">
-                        Brand Jewelry On Orders
+                        class="text-xl md:text-2xl font-bold mb-6 text-center font-[Cairo] text-primary drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] tracking-wider uppercase fade-in">
+                        Jewellery Made On Order
                         <span class="block w-20 md:w-24 h-[2px] bg-primary mx-auto mt-2 rounded-full opacity-70"></span>
                     </h3>
-                    <div class="horizontal-scroll overflow-x-auto -mx-4 px-4 py-4 bg-white rounded-lg">
-                        <div class="flex gap-4 items-start">
-                            <!-- images are fixed sizes (same ratio) and won't stretch -->
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl1Image/pic1.png" alt="Brand Jewelry 1">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl1Image/pic2.png" alt="Brand Jewelry 2">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl1Image/pic3.png" alt="Brand Jewelry 3">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl1Image/pic4.png" alt="Brand Jewelry 4">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl1Image/pic5.png" alt="Brand Jewelry 5">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl1Image/pic6.png" alt="Brand Jewelry 6">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl1Image/pic7.png" alt="Brand Jewelry 7">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl1Image/pic8.png" alt="Brand Jewelry 8">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl1Image/pic9.png" alt="Brand Jewelry 9">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl1Image/pic10.png" alt="Brand Jewelry 10">
+
+                    <div class="relative">
+                        <div id="gallery1"
+                            class="horizontal-scroll overflow-x-auto -mx-4 px-4 py-4 bg-white rounded-lg">
+                            <div class="flex gap-4 items-start">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl1Image/jewl1.png" alt="jewl1">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl1Image/jewl2.png" alt="jewl2">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl1Image/jewl3.png" alt="jewl3">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl1Image/jewl4.png" alt="jewl4">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl1Image/jewl5.png" alt="jewl5">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl1Image/jewl6.png" alt="jewl6">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl1Image/jewl7.png" alt="jewl7">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl1Image/jewl8.png" alt="jewl8">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl1Image/jewl9.png" alt="jewl9">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl1Image/jewl10.png" alt="jewl10">
+                            </div>
                         </div>
+                        <!-- Buttons -->
+                        <button onclick="document.getElementById('gallery1').scrollBy({left: -300, behavior: 'smooth'})"
+                            class="hidden sm:block md:flex absolute left-1 top-1/2 -translate-y-1/2 bg-primary bg-opacity-50 text-white
+                                   rounded-full md:w-10 md:h-10 items-center justify-center
+                                   shadow-md hover:bg-primary/90 z-10">
+                            <span class="material-symbols-outlined">
+                                keyboard_double_arrow_left
+                            </span>
+                        </button>
+                        <button onclick="document.getElementById('gallery1').scrollBy({left: 300, behavior: 'smooth'})"
+                            class="hidden sm:block md:flex absolute right-1 top-1/2 -translate-y-1/2 bg-primary bg-opacity-50 text-white
+                                   rounded-full md:w-10 md:h-10 items-center justify-center
+                                   shadow-md hover:bg-primary/90 z-10">
+                            <span class="material-symbols-outlined">
+                                keyboard_double_arrow_right
+                            </span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Jewelry, Gems & Jewelry Tools -->
-                <div>
+                <!-- Gemstones -->
+                <div class="relative">
                     <h3
-                        class="text-xl md:text-2xl font-bold mb-6 text-center font-[Cairo] text-primary drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] tracking-wider uppercase fade-in relative">
-                        Jewelry, Gems & Jewelry Tools
+                        class="text-xl md:text-2xl font-bold mb-6 text-center font-[Cairo] text-primary drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] tracking-wider uppercase fade-in">
+                        GemStones
                         <span class="block w-20 md:w-24 h-[2px] bg-primary mx-auto mt-2 rounded-full opacity-70"></span>
                     </h3>
-                    <div class="horizontal-scroll overflow-x-auto -mx-4 px-4 py-4 bg-white rounded-lg">
-                        <div class="flex gap-4 items-start">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl2Image/gem1.png" alt="gem 1">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl2Image/gem8.png" alt="gem 2">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl2Image/gem10.png" alt="gem 3">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl2Image/gem7.png" alt="gem 4">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl2Image/gem5.png" alt="Gem 5">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl2Image/gem6.png" alt="gem 6">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl2Image/gem9.png" alt="gem 7">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl2Image/gem2.png" alt="gem 8">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl2Image/gem3.png" alt="gem 9">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl2Image/gem4.png" alt="gem 10">
-                            <!-- duplicate or extra images can be added as needed -->
+
+                    <div class="relative">
+                        <div id="gallery2"
+                            class="horizontal-scroll overflow-x-auto -mx-4 px-4 py-4 bg-white rounded-lg">
+                            <div class="flex gap-4 items-start">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl2Image/gemstone1.png" alt="gemstone1">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl2Image/gemstone2.png" alt="gemstone2">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl2Image/gemstone3.png" alt="gemstone3">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl2Image/gemstone4.png" alt="gemstone4">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl2Image/gemstone5.png" alt="gemstone5">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl2Image/gemstone6.png" alt="gemstone6">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl2Image/gemstone7.png" alt="gemstone7">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl2Image/gemstone8.png" alt="gemstone8">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl2Image/gemstone9.png" alt="gemstone9">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl2Image/gemstone10.png" alt="gemstone10">
+                            </div>
                         </div>
+                        <!-- Buttons -->
+                        <button onclick="document.getElementById('gallery2').scrollBy({left: -300, behavior: 'smooth'})"
+                            class="hidden sm:block md:flex absolute left-1 top-1/2 -translate-y-1/2 bg-primary bg-opacity-50 text-white
+                                   rounded-full md:w-10 md:h-10 items-center justify-center
+                                   shadow-md hover:bg-primary/90 z-10">
+                            <span class="material-symbols-outlined">
+                                keyboard_double_arrow_left
+                            </span>
+                        </button>
+                        <button onclick="document.getElementById('gallery2').scrollBy({left: 300, behavior: 'smooth'})"
+                            class="hidden sm:block md:flex absolute right-1 top-1/2 -translate-y-1/2 bg-primary bg-opacity-50 text-white
+                                   rounded-full md:w-10 md:h-10 items-center justify-center
+                                   shadow-md hover:bg-primary/90 z-10">
+                            <span class="material-symbols-outlined">
+                                keyboard_double_arrow_right
+                            </span>
+                        </button>
                     </div>
                 </div>
 
                 <!-- Made on Order Pendant Sets -->
-                <div>
+                <div class="relative">
                     <h3
-                        class="text-xl md:text-2xl font-bold mb-6 text-center font-[Cairo] text-primary drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] tracking-wider uppercase fade-in relative">
-                        Made on Order Pendant Sets
+                        class="text-xl md:text-2xl font-bold mb-6 text-center font-[Cairo] text-primary drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] tracking-wider uppercase fade-in">
+                        Made On Order Pendant Sets
                         <span class="block w-20 md:w-24 h-[2px] bg-primary mx-auto mt-2 rounded-full opacity-70"></span>
                     </h3>
-                    <div class="horizontal-scroll overflow-x-auto -mx-4 px-4 py-4 bg-white rounded-lg">
-                        <div class="flex gap-4 items-start">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl3Image/pendant1.png" alt="Pendant 1">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl3Image/pendant2.png" alt="Pendant 2">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl3Image/pendant3.png" alt="Pendant 3">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl3Image/pendant4.png" alt="Pendant 4">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl3Image/pendant5.png" alt="Pendant 5">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl3Image/pendant6.png" alt="Pendant 6">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl3Image/pendant7.png" alt="Pendant 7">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl3Image/pendant8.png" alt="Pendant 8">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl3Image/pendant9.png" alt="Pendant 9">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl3Image/pendant10.png" alt="Pendant 10">
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Name Pendants, Rings & Color Stones -->
-                <div>
-                    <h3
-                        class="text-xl md:text-2xl font-bold mb-6 text-center font-[Cairo] text-primary drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] tracking-wider uppercase fade-in relative">
-                        Name Pendants, Rings &
-                        Color Stones
-                        <span
-                            class="block w-20 md:w-24 h-[2px] bg-primary mx-auto mt-2 rounded-full opacity-70"></span>
-                    </h3>
-                    <div class="horizontal-scroll overflow-x-auto -mx-4 px-4 py-4 bg-white rounded-lg">
-                        <div class="flex gap-4 items-start">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl4Image/p1.png" alt="p1">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl4Image/p2.png" alt="p2">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl4Image/p3.png" alt="p3">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl4Image/p4.png" alt="p4">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl4Image/p5.png" alt="p5">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl4Image/p6.png" alt="p6">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl4Image/p7.png" alt="p7">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl4Image/p8.png" alt="p8">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl4Image/p9.png" alt="p9">
-                            <img loading="lazy"
-                                class="border border-newblue gallery-item w-64 h-80 md:w-72 md:h-48 lg:w-80 lg:h-56 flex-shrink-0 object-cover rounded-xl shadow-lg snap-start cursor-pointer"
-                                src="images/jewl4Image/p10.png" alt="p10">
-
+                    <div class="relative">
+                        <div id="gallery3"
+                            class="horizontal-scroll overflow-x-auto -mx-4 px-4 py-4 bg-white rounded-lg">
+                            <div class="flex gap-4 items-start">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl3Image/pendant1.png" alt="pendant1">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl3Image/pendant2.png" alt="pendant2">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl3Image/pendant3.png" alt="pendant3">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl3Image/pendant4.png" alt="pendant4">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl3Image/pendant5.png" alt="pendant5">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl3Image/pendant6.png" alt="pendant6">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl3Image/pendant7.png" alt="pendant7">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl3Image/pendant8.png" alt="pendant8">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl3Image/pendant9.png" alt="pendant9">
+                                <img loading="lazy"
+                                    class="gallery-item border border-newblue w-64 h-80 md:w-72 md:h-56 lg:w-80 lg:h-64 flex-shrink-0 object-cover rounded-xl shadow-lg hover:shadow-xl snap-start cursor-pointer"
+                                    src="images/jewl3Image/pendant10.png" alt="pendant10">
+                            </div>
                         </div>
+                        <!-- Buttons -->
+                        <button onclick="document.getElementById('gallery3').scrollBy({left: -300, behavior: 'smooth'})"
+                            class="hidden sm:block md:flex absolute left-1 top-1/2 -translate-y-1/2 bg-primary bg-opacity-50 text-white
+                                   rounded-full md:w-10 md:h-10 items-center justify-center
+                                   shadow-md hover:bg-primary/90 z-10">
+                            <span class="material-symbols-outlined">
+                                keyboard_double_arrow_left
+                            </span>
+                        </button>
+                        <button onclick="document.getElementById('gallery3').scrollBy({left: 300, behavior: 'smooth'})"
+                            class="hidden sm:block md:flex absolute right-1 top-1/2 -translate-y-1/2 bg-primary bg-opacity-50 text-white
+                                   rounded-full md:w-10 md:h-10 items-center justify-center
+                                   shadow-md hover:bg-primary/90 z-10">
+                            <span class="material-symbols-outlined">
+                                keyboard_double_arrow_right
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -503,29 +576,39 @@
     <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden z-50 flex items-center justify-center">
         <!-- Close Button -->
         <button aria-label="Close" class="absolute top-6 right-6 text-white text-3xl font-bold z-60"
-            onclick="closeLightbox()">x</button>
+            onclick="closeLightbox()"><span class="material-symbols-outlined">
+                close
+            </span></button>
         <!-- Prev / Next Controls -->
-        <button aria-label="Previous"
-            class="absolute left-6 top-1/2 -translate-y-1/2 text-white text-4xl font-bold z-60"
-            onclick="prevImage()">◀</button>
-        <button aria-label="Next" class="absolute right-6 top-1/2 -translate-y-1/2 text-white text-4xl font-bold z-60"
-            onclick="nextImage()">▶</button>
+        <button aria-label="Prev" onclick="prevImage()" class="flex absolute left-2 top-1/2 -translate-y-1/2 bg-primary text-white
+                 rounded-full w-10 h-8 md:w-10 md:h-10 items-center justify-center
+                 shadow-md hover:bg-primary/90 z-10">
+            <span class="material-symbols-outlined">
+                keyboard_double_arrow_left
+            </span>
+        </button>
+        <button aria-label="Next" onclick="nextImage()" class="flex absolute right-1 top-1/2 -translate-y-1/2 bg-primary text-white
+                 rounded-full w-10 h-8 md:w-10 md:h-10 items-center justify-center
+                 shadow-md hover:bg-primary/90 z-10">
+            <span class="material-symbols-outlined">
+                keyboard_double_arrow_right
+            </span></button>
         <!-- Image -->
         <img id="lightbox-img" src="" alt="Preview" class="max-h-[80%] max-w-[90%] rounded-lg shadow-lg">
     </div>
 
-
-    <!-- Caviar Section -->
-    <section id="caviar" class="relative py-20 bg-white"
+    <!------------------------------------------------------ Caviar Section------------------------------------------------------------ -->
+    <section id="caviar" class="relative py-20 bg-white scroll-mt-24"
         style="background-image: url('images/caviarBg.jpg'); background-size: cover; background-position: center;">
 
         <!-- Overlay -->
-        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 bg-black/10"></div>
 
         <!-- Content -->
         <div class="relative container mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-primary fade-in">
+                <h2
+                    class="text-2xl md:text-3xl font-bold mb-4 text-white fade-in drop-shadow-[0_0_8px_rgba(0,0,0,0.8)]">
                     Premium <span style="color: hsl(200 98% 42%)">Caviar Import</span>
                 </h2>
                 <p class="text-sm text-white max-w-2xl mx-auto fade-in">
@@ -566,15 +649,161 @@
                     </p>
                 </div>
             </div>
+
+            <!-- Wrapper for arrows + cards -->
+            <div class="relative mt-10">
+                <!-- Scrollable Cards -->
+                <div id="caviarScroll" class="flex overflow-x-auto snap-x snap-mandatory space-x-6  pt-2 pb-6  
+                    scrollbar-hide scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]
+                     lg:[&::-webkit-scrollbar]:hidden lg:[-ms-overflow-style:none] lg:[scrollbar-width:none]">
+                    <!-- Card 1 -->
+                    <div
+                        class="min-w-[250px] bg-white/95 border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 snap-start">
+                        <!-- Image + Name Overlay -->
+                        <div class="relative">
+                            <img src="images/caviar/pic1.jpeg" alt="Beluga Caviar" class="w-full h-60 object-cover">
+                            <h3
+                                class="absolute bottom-2 left-2 bg-black/60 text-white px-3 py-1 rounded-md text-sm font-semibold">
+                                Caviar Hybrid
+                            </h3>
+                        </div>
+                        <!-- Content -->
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-1">Hybrid Caviar, a fusion of the finest sturgeon
+                                species, features pearls from gray to golden with a balanced flavor - perfect for
+                                adventurous palates.
+                            </p>
+                            <p class="text-primary font-semibold">1,100 AED - 20,400 AED</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="min-w-[250px] bg-white/95 border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 snap-start">
+                        <div class="relative">
+                            <img src="images/caviar/pic2.jpeg" alt="Osetra Caviar" class="w-full h-60 object-cover">
+                            <h3
+                                class="absolute bottom-2 left-2 bg-black/60 text-white px-3 py-1 rounded-md text-sm font-semibold">
+                                Royal Beluga
+                            </h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-1">Royal Beluga Caviar, with large glossy gray pearls and
+                                a rich buttery flavor, offers a creamy melt-in-the-mouth texture - a truly regal
+                                delicacy.</p>
+                            <p class="text-primary font-semibold">775 AED - 14,500 AED</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="min-w-[250px] bg-white/95 border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 snap-start">
+                        <div class="relative">
+                            <img src="images/caviar/pic3.jpeg" alt="Sevruga Caviar" class="w-full h-60 object-cover">
+                            <h3
+                                class="absolute bottom-2 left-2 bg-black/60 text-white px-3 py-1 rounded-md text-sm font-semibold">
+                                Caspian Black Beluga
+                            </h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-1">Caspian BB Caviar, with glistening black
+                                pearls and a rich flavor, reflects Iranian excellence and offers a truly
+                                memorable culinary experience.</p>
+                            <p class="text-primary font-semibold">850 AED - 16,000 AED</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div
+                        class="min-w-[250px] bg-white/95 border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 snap-start">
+                        <div class="relative">
+                            <img src="images/caviar/pic4.jpg" alt="Kaluga Caviar" class="w-full h-60 object-cover">
+                            <h3
+                                class="absolute bottom-2 left-2 bg-black/60 text-white px-3 py-1 rounded-md text-sm font-semibold">
+                                Golden Imperial
+                            </h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-1">Golden Imperial Caviar, with shimmering golden pearls
+                                and a velvety buttery taste, embodies luxury - perfect for grand occasions or as a
+                                lavish gift.</p>
+                            <p class="text-primary font-semibold">1,250 AED - 24,000 AED</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div
+                        class="min-w-[250px] bg-white/95 border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 snap-start">
+                        <div class="relative">
+                            <img src="images/caviar/pic5.jpg" alt="Sterlet Caviar" class="w-full h-60 object-cover">
+                            <h3
+                                class="absolute bottom-2 left-2 bg-black/60 text-white px-3 py-1 rounded-md text-sm font-semibold">
+                                Kaluga Queen Beluga
+                            </h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-1">Kaluga QB Caviar, with large dark gray
+                                pearls & a rich creamy flavor, delivers a delicate balance of texture & taste - a
+                                true luxury for refined palates.</p>
+                            <p class="text-primary font-semibold">675 AED - 12,500 AED</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div
+                        class="min-w-[250px] bg-white/95 border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 snap-start">
+                        <div class="relative">
+                            <img src="images/caviar/pic6.jpg" alt="Siberian Caviar" class="w-full h-60 object-cover">
+                            <h3
+                                class="absolute bottom-2 left-2 bg-black/60 text-white px-3 py-1 rounded-md text-sm font-semibold">
+                                Caspian Gray Beluga
+                            </h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 mb-1">Caspian Gray Beluga Caviar, with smooth gray pearls
+                                & a mild buttery flavor, offers a silky, refined taste - perfect for elegant soirées
+                                or celebrations.</p>
+                            <p class="text-primary font-semibold">950 AED - 18,000 AED</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Scroll Arrows (only lg and above) -->
+                <button onclick="document.getElementById('caviarScroll').scrollBy({left: -300, behavior: 'smooth'})"
+                    class="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white
+                rounded-full w-10 h-10 items-center justify-center shadow-md hover:bg-black transition">
+                    <span class="material-symbols-outlined">
+                        keyboard_double_arrow_left
+                    </span>
+                </button>
+
+                <button onclick="document.getElementById('caviarScroll').scrollBy({left: 300, behavior: 'smooth'})"
+                    class="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white
+                rounded-full w-10 h-10 items-center justify-center shadow-md hover:bg-black transition">
+                    <span class="material-symbols-outlined">
+                        keyboard_double_arrow_right
+                    </span>
+                </button>
+            </div>
+
+            <!-- Contact for Order -->
+            <div class="text-center mt-10">
+                <h3 class="text-xl font-semibold text-white drop-shadow-md">Interested in Ordering?</h3>
+                <p class="text-white/90 text-sm mt-2">Contact us directly to place your premium caviar order.</p>
+                <a onclick="scrollToSection('contact')"
+                    class="inline-block mt-4 bg-newblue text-white px-6 py-2 rounded-lg shadow-md hover:bg-sky-700 transition">
+                    Contact for Order
+                </a>
+            </div>
         </div>
     </section>
 
-
-    <!-- Consultancy Section -->
-    <section id="consultancy" class="relative py-20 bg-white"
+    <!--------------------------------------------------- Consultancy Section ------------------------------------------------------->
+    <section id="consultancy" class="relative py-20 bg-white scroll-mt-24"
         style="background-image: url('images/consultancyBg.jpg'); background-size: cover; background-position: center;">
         <!-- Overlay for readability -->
-        <div class="absolute inset-0 bg-blue-600/40"></div>
+        <div class="absolute inset-0 bg-newblue/20"></div>
 
         <!-- Content -->
         <div class="relative container mx-auto px-6">
@@ -582,10 +811,9 @@
                 <h2 class="text-2xl md:text-3xl font-bold mb-4 text-primary fade-in">
                     Business <span style="color: hsl(200 98% 42%)">Consultancy</span> Services
                 </h2>
-                <p class="text-sm text-white max-w-2xl mx-auto fade-in">
-                    Expert guidance for company formation, licensing, visa services, recruitment, marketing, and
-                    tailored
-                    consultancy solutions to support your business growth in the UAE and beyond.
+                <p class="text-gray-900 bg-blue-50 max-w-2xl mx-auto rounded-lg p-4 shadow-sm fade-in">
+                    Expert guidance for company formation, licensing, visa services, recruitment, marketing,
+                    and tailored consultancy solutions to support your business growth in the UAE and beyond.
                 </p>
             </div>
 
@@ -594,97 +822,70 @@
                 <div
                     class="bg-white/95 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in">
                     <div class="service-icon mb-4 text-2xl">🏢</div>
-                    <h3 class="text-lg font-bold mb-3 text-primary">Business Setup</h3>
+                    <h3 class="text-lg font-bold mb-3 text-primary">Business Setup & Licensing</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        Complete support for Mainland and Free Zone company formation with expert guidance through UAE
-                        regulations.
+                        End-to-end assistance for Mainland and Free Zone company formation with complete licensing
+                        support
+                        and hassle-free compliance.
                     </p>
                 </div>
                 <!-- Card 2 -->
                 <div
                     class="bg-white/95 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in">
-                    <div class="service-icon mb-4 text-2xl">📋</div>
-                    <h3 class="text-lg font-bold mb-3 text-primary">Licensing Assistance</h3>
+                    <div class="service-icon mb-4 text-2xl">🛂</div>
+                    <h3 class="text-lg font-bold mb-3 text-primary">Visa & Premises Consulting</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        Fast and hassle-free processing of new business licenses with comprehensive regulatory
-                        compliance.
+                        Streamlined visa processing for employees and families, along with strategic guidance for
+                        finding
+                        ideal office and business spaces.
                     </p>
                 </div>
                 <!-- Card 3 -->
                 <div
                     class="bg-white/95 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in">
-                    <div class="service-icon mb-4 text-2xl">🛂</div>
-                    <h3 class="text-lg font-bold mb-3 text-primary">Visa Services</h3>
+                    <div class="service-icon mb-4 text-2xl">👥</div>
+                    <h3 class="text-lg font-bold mb-3 text-primary">Recruitment Solutions</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        End-to-end management of company and family visas with expedited processing capabilities.
+                        Specialized recruitment consultancy providing top-tier talent across industries, including
+                        jewelry,
+                        retail, and corporate sectors.
                     </p>
                 </div>
                 <!-- Card 4 -->
                 <div
                     class="bg-white/95 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in">
-                    <div class="service-icon mb-4 text-2xl">🏘️</div>
-                    <h3 class="text-lg font-bold mb-3 text-primary">Premises Consulting</h3>
+                    <div class="service-icon mb-4 text-2xl">👔</div>
+                    <h3 class="text-lg font-bold mb-3 text-primary">Staff Branding</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        Strategic guidance in finding and setting up optimal office and business spaces in Dubai.
+                        Professionally designed staff uniforms with company branding to enhance your team’s image and
+                        corporate identity.
                     </p>
                 </div>
                 <!-- Card 5 -->
                 <div
                     class="bg-white/95 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in">
-                    <div class="service-icon mb-4 text-2xl">👥</div>
-                    <h3 class="text-lg font-bold mb-3 text-primary">Specialized Recruitment</h3>
+                    <div class="service-icon mb-4 text-2xl">📊</div>
+                    <h3 class="text-lg font-bold mb-3 text-primary">Corporate Consultancy</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        Recruitment consultancy connecting businesses with top-tier talent, including skilled
-                        professionals
-                        for the jewelry industry and beyond.
+                        Expert advisory in structuring, compliance, and market research to ensure sustainable growth and
+                        business success.
                     </p>
                 </div>
                 <!-- Card 6 -->
                 <div
                     class="bg-white/95 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in">
-                    <div class="service-icon mb-4 text-2xl">👔</div>
-                    <h3 class="text-lg font-bold mb-3 text-primary">Staff Branding</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Custom-designed staff uniforms with company branding to enhance professional image.
-                    </p>
-                </div>
-                <!-- Card 7 -->
-                <div
-                    class="bg-white/95 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in">
-                    <div class="service-icon mb-4 text-2xl">📊</div>
-                    <h3 class="text-lg font-bold mb-3 text-primary">Business & Corporate Consultancy</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        Strategic advisory for business structuring, market research, regulatory compliance, and
-                        sustainable
-                        growth.
-                    </p>
-                </div>
-                <!-- Card 8 -->
-                <div
-                    class="bg-white/95 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in">
-                    <div class="service-icon mb-4 text-2xl">💼</div>
-                    <h3 class="text-lg font-bold mb-3 text-primary">Recruitment Consultancy</h3>
-                    <p class="text-xs text-gray-600 leading-relaxed">
-                        End-to-end recruitment solutions helping organizations hire professionals aligned with their
-                        goals
-                        and culture.
-                    </p>
-                </div>
-                <!-- Card 9 -->
-                <div
-                    class="bg-white/95 border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in">
                     <div class="service-icon mb-4 text-2xl">📢</div>
-                    <h3 class="text-lg font-bold mb-3 text-primary">Corporate Marketing & Branding</h3>
+                    <h3 class="text-lg font-bold mb-3 text-primary">Marketing & Branding</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        Building strong brand identities with innovative marketing, digital campaigns, and advertising
-                        strategies.
+                        Creative strategies for corporate marketing, digital campaigns, and brand building to boost your
+                        visibility in competitive markets.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!---------------------------------- Testimonials Section---------------------------------------------------------- -->
     <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
@@ -692,7 +893,7 @@
                     Client <span style="color: hsl(200 98 42)">Testimonials</span>
                 </h2>
                 <p class="text-sm text-gray-600 max-w-2xl mx-auto fade-in">
-                    Hear from our satisfied clients across jewelry, consultancy, caviar trading, printing, and
+                    Hear from our satisfied clients across jewellery, consultancy, caviar trading, printing, and
                     customized solutions.
                 </p>
             </div>
@@ -711,13 +912,13 @@
                                 </blockquote>
                                 <div>
                                     <h4 class="text-sm font-semibold text-gray-900">Buta Jewellers</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Jewellery Trading</p>
-                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
+                                    <p class="text-xs text-gray-600 mt-1">Jewellery Trading & Manufacturing</p>
+                                    <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE | Istanbul</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Consultancy - Vello Doro Jew -->
+                        <!-- Consultancy - Vello Doro Jewellers -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
                                 <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
@@ -726,25 +927,26 @@
                                     knowledge, and cost-effective packages made our expansion seamless."
                                 </blockquote>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-900">Vello Doro Jew</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Business Consultancy</p>
+                                    <h4 class="text-sm font-semibold text-gray-900">Vello Doro Jewellery</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Jewellery Trader</p>
                                     <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE | Moscow | Azerbaijan
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Jewellery Boxes - Malakain Jew -->
+                        <!-- Jewellery Boxes - Malakain Jewellry -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
                                 <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
                                 <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
-                                    "The custom jewelry boxes exceeded expectations. Premium materials, velvet lining,
+                                    "The custom jewellerry boxes exceeded expectations. Premium materials, velvet
+                                    lining,
                                     magnetic closure, and great attention to detail at an affordable price."
                                 </blockquote>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-900">Malakain Jew</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Customized Jewelry Boxes</p>
+                                    <h4 class="text-sm font-semibold text-gray-900">Malakain Jewellery</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Jewellery Trader</p>
                                     <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
@@ -755,12 +957,12 @@
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
                                 <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
                                 <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
-                                    "Altima’s Oscietra Gold Reserve is world-class. Golden tone, delicate pop, exquisite
+                                    "Altima's Oscietra Gold Reserve is world-class. Golden tone, delicate pop, exquisite
                                     nutty flavor, and consistent premium quality."
                                 </blockquote>
                                 <div>
                                     <h4 class="text-sm font-semibold text-gray-900">King Caviar</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Caviar Trading</p>
+                                    <p class="text-xs text-gray-600 mt-1">Caviar Trader</p>
                                     <p class="text-xs text-newblue mt-1 font-medium">Dubai Mall, UAE</p>
                                 </div>
                             </div>
@@ -771,12 +973,12 @@
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
                                 <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
                                 <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
-                                    "Consistently excellent caviar – glossy, rich, nutty flavor with perfect freshness.
+                                    "Consistently excellent caviar - glossy, rich, nutty flavor with perfect freshness.
                                     Always delivered securely and on time."
                                 </blockquote>
                                 <div>
                                     <h4 class="text-sm font-semibold text-gray-900">Kaspian Caviar</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Caviar Trading</p>
+                                    <p class="text-xs text-gray-600 mt-1">Caviar Trader</p>
                                     <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
@@ -792,13 +994,12 @@
                                 </blockquote>
                                 <div>
                                     <h4 class="text-sm font-semibold text-gray-900">DUTCO International</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Printing & Uniforms</p>
                                     <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Printing - Caspian Jew -->
+                        <!-- Printing - Caspian Jewellery -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
                                 <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
@@ -807,8 +1008,8 @@
                                     and finishing were excellent."
                                 </blockquote>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-900">Caspian Jew LLC</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Jewelry & Printing</p>
+                                    <h4 class="text-sm font-semibold text-gray-900">Caspian Jewellery LLC</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Jewelry & Manufacturing</p>
                                     <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
@@ -824,7 +1025,6 @@
                                 </blockquote>
                                 <div>
                                     <h4 class="text-sm font-semibold text-gray-900">Brilla Diamonds DMCC</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Printing & Packaging</p>
                                     <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
@@ -840,7 +1040,6 @@
                                 </blockquote>
                                 <div>
                                     <h4 class="text-sm font-semibold text-gray-900">BZ Diamonds DMCC</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Printing & Packaging</p>
                                     <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
@@ -856,23 +1055,23 @@
                                 </blockquote>
                                 <div>
                                     <h4 class="text-sm font-semibold text-gray-900">Annexsys Trading LLC</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Business Consultancy</p>
                                     <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Consultancy - Brillianto Jew -->
+                        <!-- Consultancy - Brillianto Jewellry -->
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="bg-white border border-gray-200 rounded-lg p-8 text-center shadow-lg">
                                 <div class="flex justify-center mb-4"><span class="text-yellow-400">★★★★★</span></div>
                                 <blockquote class="text-sm text-gray-600 leading-relaxed mb-6 italic">
-                                    "Brillianto Jew benefited from end-to-end consultancy – licensing, compliance, and
+                                    "Brillianto Jewellery benefited from end-to-end consultancy - licensing, compliance,
+                                    and
                                     seamless business support."
                                 </blockquote>
                                 <div>
-                                    <h4 class="text-sm font-semibold text-gray-900">Brillianto Jew LLC</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Business Consultancy</p>
+                                    <h4 class="text-sm font-semibold text-gray-900">Brillianto Jewellery LLC</h4>
+                                    <p class="text-xs text-gray-600 mt-1">Jewellery Trader</p>
                                     <p class="text-xs text-newblue mt-1 font-medium">Sharjah, UAE</p>
                                 </div>
                             </div>
@@ -888,7 +1087,7 @@
                                 </blockquote>
                                 <div>
                                     <h4 class="text-sm font-semibold text-gray-900">MSK Star Trading LLC</h4>
-                                    <p class="text-xs text-gray-600 mt-1">Business Consultancy</p>
+                                    <p class="text-xs text-gray-600 mt-1">Trading</p>
                                     <p class="text-xs text-newblue mt-1 font-medium">Dubai, UAE</p>
                                 </div>
                             </div>
@@ -904,15 +1103,16 @@
     </section>
 
 
-    <!-- FAQ Section -->
-    <section id="faq" class="py-20 bg-white">
+    <!-- ------------------------------------------FAQ Section ---------------------------------------------------------------------->
+    <section id="faq" class="py-20 bg-white scroll-mt-24">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-2xl md:text-3xl font-bold mb-4 text-primary fade-in">
                     Frequently Asked <span style="color: hsl(200 98 42)">Questions</span>
                 </h2>
                 <p class="text-sm text-gray-600 max-w-2xl mx-auto fade-in">
-                    Find answers to common questions about our business consultancy, jewelry trading, and premium caviar
+                    Find answers to common questions about our business consultancy, jewellery trading, and premium
+                    caviar
                     import services.
                 </p>
             </div>
@@ -930,7 +1130,7 @@
                     </button>
                     <div class="faq-answer hidden px-6 pb-6 text-xs text-gray-600 leading-relaxed">
                         Mainland and Free Zone company formation, licensing, visa services, premises consulting, and
-                        specialized recruitment (especially for the jewelry sector).
+                        specialized recruitment (especially for the jewellery sector).
                     </div>
                 </div>
 
@@ -972,12 +1172,12 @@
                         class="faq-button w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
                         onclick="toggleFAQ(3)">
                         <h3 class="text-sm font-semibold text-gray-900 pr-4">
-                            What makes your jewelry trading services unique?
+                            What makes your jewellery trading services unique?
                         </h3>
                         <span class="faq-icon text-blue-600 flex-shrink-0">▼</span>
                     </button>
                     <div class="faq-answer hidden px-6 pb-6 text-xs text-gray-600 leading-relaxed">
-                        Custom jewelry, gemstone trading, luxury packaging, and secure online platforms with global
+                        Custom jewellery, gemstone trading, luxury packaging, and secure online platforms with global
                         reach.
                     </div>
                 </div>
@@ -1004,13 +1204,13 @@
                         class="faq-button w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
                         onclick="toggleFAQ(5)">
                         <h3 class="text-sm font-semibold text-gray-900 pr-4">
-                            Can you help with specialized recruitment for the jewelry industry?
+                            Can you help with specialized recruitment for the jewellery industry?
                         </h3>
                         <span class="faq-icon text-blue-600 flex-shrink-0">▼</span>
                     </button>
                     <div class="faq-answer hidden px-6 pb-6 text-xs text-gray-600 leading-relaxed">
-                        Absolutely. We specialize in recruiting skilled professionals for the jewelry sector including
-                        sales staff, jewelry workshop staff (Normal Setter, Micro Setter, Goldsmith,
+                        Absolutely. We specialize in recruiting skilled professionals for the jewellery sector including
+                        sales staff, jewellery workshop staff (Normal Setter, Micro Setter, Goldsmith,
                         Polishers, CAD Designers), accountants, and provide custom staff branding with uniforms.
                     </div>
                 </div>
@@ -1034,8 +1234,8 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-primary text-white">
+    <!----------------------------------------- Contact Section ------------------------------------------------------------>
+    <section id="contact" class="py-20 bg-primary text-white scroll-mt-24">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-2xl md:text-3xl font-bold mb-4 fade-in">
@@ -1085,7 +1285,7 @@
                                     class="w-full px-4 py-2 bg-white/10 border border-white/30 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-newblue">
                                     <option value="" class="bg-primary">Select a service</option>
                                     <option value="consultancy" class="bg-primary">Business Consultancy</option>
-                                    <option value="jewelry" class="bg-primary">Jewelry Trading</option>
+                                    <option value="jewelry" class="bg-primary">Jewellery Trading</option>
                                     <option value="caviar" class="bg-primary">Premium Caviar</option>
                                     <option value="multiple" class="bg-primary">Multiple Services</option>
                                 </select>
@@ -1129,7 +1329,7 @@
                         <!-- Jewelry -->
                         <div
                             class="bg-white/10 border border-white/20 rounded-lg p-6 text-center hover-lift hover-glow transition">
-                            <h3 class="text-lg font-bold mb-3 text-newblue">Jewelry Trading</h3>
+                            <h3 class="text-lg font-bold mb-3 text-newblue">Jewellery Trading</h3>
                             <p class="mb-5 opacity-90 text-xs leading-relaxed">
                                 Custom jewelry creation, gemstone trading, and luxury packaging solutions for discerning
                                 clients.
@@ -1168,7 +1368,7 @@
                     - Excellence across the Middle East, Europe, and Asia
                 </p>
                 <div class="text-xs md:text-sm opacity-60 mt-2">
-                    UAE Business Setup • Luxury Jewelry Trading • Premium Caviar Import • Global Service Excellence
+                    UAE Business Setup • Luxury Jewellery Trading • Premium Caviar Import • Global Service Excellence
                 </div>
             </div>
 
@@ -1177,7 +1377,7 @@
                 <p><strong>Office-Operations:</strong> 406-4th floor, Mai Tower, Al Nahda 2, P.O.Box 57911, Dubai, UAE
                 </p>
                 <p><strong>Phone:</strong> +971502616654 / 0507725253</p>
-                <p><strong>Additional Office:</strong> 13th floor, City Tower 2, Sheikh Zayed Road, Dubai, UAE</p>
+                <p><strong>Branch Office:</strong> 13th floor, City Tower 2, Sheikh Zayed Road, Dubai, UAE</p>
                 <p><strong>Email:</strong> <a href="mailto:fortune53gentrdg@gmail.com"
                         class="underline hover:text-red-400">fortune53gentrdg@gmail.com</a></p>
             </div>
@@ -1185,7 +1385,7 @@
             <!-- Logo -->
             <div class="flex flex-col items-center justify-center md:justify-end mt-4 md:mt-0 flex-1 text-center">
                 <img src="images/Logo.png" alt="Business Logo"
-                    class="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain fade-in drop-shadow-[0_0_8px_white] cursor-pointer"
+                    class="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain fade-in drop-shadow-[0_0_8px_white] brightness-150 cursor-pointer"
                     onclick="scrollToSection('hero')">
                 <div class="mt-2 text-xs opacity-50">
                     © <span id="footer-year"></span> Fortune 53 General Trading LLC. All Rights Reserved. <br>
