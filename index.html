@@ -152,68 +152,67 @@
         }
     </style>
 </head>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <body class="bg-background text-foreground">
     <!-- Header -->
     <header class="bg-gradient-primary text-white shadow-luxury sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4">
             <nav class="flex items-center justify-between">
-                <!-- Logo + Brand -->
-                <div class="flex items-center space-x-3 hover-lift cursor-pointer" onclick="scrollToSection('hero')">
-                    <!-- Logo -->
-                    <img src="images/Logo.png" alt="Business Logo"
+                <!-- Logo + Brand (Made clickable with semantic link) -->
+                <a href="#hero" onclick="scrollToSection('hero'); return false;"
+                    class="flex items-center space-x-3 hover-lift cursor-pointer" aria-label="Scroll to home section">
+                    <img src="images/Logo.png" alt="Business Logo" loading="lazy"
                         class="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 object-contain drop-shadow-[0_0_8px_white] brightness-150">
-                    <!-- Text -->
                     <div class="flex flex-col">
-                        <!-- Arabic Text -->
                         <span
                             class="text-sm md:text-base font-bold tracking-tight font-[Cairo] leading-tight text-left cairo-font">
                             فورتشن فيفتي ثري للتجارة العامة ذ م م
                         </span>
-                        <!-- Separator -->
                         <span class="w-full border-t border-white/40 my-1"></span>
-                        <!-- English Text -->
                         <div class="flex flex-col md:flex-row md:items-center md:space-x-2">
-                            <!-- Fortune53 -->
                             <div class="text-base md:text-lg font-bold tracking-tight">
                                 Fortune<span class="text-red-500 drop-shadow-md">53</span>
                             </div>
-                            <!-- General Trading LLC -->
                             <div class="text-xs md:text-sm font-medium opacity-90 tracking-wide">
                                 General Trading LLC
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
-                <!-- Desktop Nav Links -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <button onclick="scrollToSection('trading')"
-                        class="text-sm font-medium hover:text-red-400 transition-colors hover-lift tracking-wide">
-                        Jewellery Trading
-                    </button>
-                    <button onclick="scrollToSection('caviar')"
-                        class="text-sm font-medium hover:text-red-400 transition-colors hover-lift tracking-wide">
-                        Premium Caviar
-                    </button>
-                    <button onclick="scrollToSection('consultancy')"
-                        class="text-sm font-medium hover:text-red-400 transition-colors hover-lift tracking-wide">
-                        Business Consultancy
-                    </button>
-                    <button onclick="scrollToSection('faq')"
-                        class="text-sm font-medium hover:text-red-400 transition-colors hover-lift tracking-wide">
-                        FAQ
-                    </button>
-                    <button onclick="scrollToSection('contact')"
-                        class="text-sm font-medium hover:text-red-400 transition-colors hover-lift tracking-wide">
-                        Contact
-                    </button>
+                <!-- Desktop Nav Links (Changed to <a> for better semantics) -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#trading" onclick="scrollToSection('trading'); return false;"
+                        class="text-sm font-medium hover:text-red-400 transition"
+                        aria-label="Navigate to Jewellery Trading section">Jewellery Trading</a>
+                    <a href="#caviar" onclick="scrollToSection('caviar'); return false;"
+                        class="text-sm font-medium hover:text-red-400 transition"
+                        aria-label="Navigate to Premium Caviar section">Premium Caviar</a>
+                    <a href="#consultancy" onclick="scrollToSection('consultancy'); return false;"
+                        class="text-sm font-medium hover:text-red-400 transition"
+                        aria-label="Navigate to Business Consultancy section">Business Consultancy</a>
+                    <a href="#faq" onclick="scrollToSection('faq'); return false;"
+                        class="text-sm font-medium hover:text-red-400 transition"
+                        aria-label="Navigate to FAQ section">FAQ</a>
+                    <a href="#contact" onclick="scrollToSection('contact'); return false;"
+                        class="text-sm font-medium hover:text-red-400 transition"
+                        aria-label="Navigate to Contact section">Contact</a>
+
+                    <!-- 🌍 Desktop Lang (Added aria-label) -->
+                    <select id="lang-desktop" aria-label="Select language"
+                        class="bg-white text-gray-800 border border-gray-300 rounded-md px-3 py-1.5 font-medium cursor-pointer focus:outline-none">
+                        <option value="">🌐 Language</option>
+                        <option value="en">English</option>
+                        <option value="ar">Arabic</option>
+                        <option value="ru">Russian</option>
+                    </select>
                 </div>
 
                 <!-- Mobile Menu Button -->
                 <button id="menu-toggle"
-                    class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-white/40 hover:bg-white/10 transition">
-                    <!-- Icon -->
+                    class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-white/40 hover:bg-white/10 transition"
+                    aria-label="Open mobile menu">
                     <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -223,36 +222,206 @@
             </nav>
         </div>
 
-        <!-- Mobile Side Drawer -->
+        <!-- Mobile Side Drawer (Fixed sizing and overflow) -->
         <div id="mobile-menu"
-            class="fixed rounded-lg top-0 right-0 h-auto w-auto bg-gradient-to-b from-primary to-primary/95 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+            class="fixed top-0 right-0 h-screen w-80 bg-gradient-to-b from-primary to-primary/95 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50 overflow-y-auto">
             <div class="flex justify-between items-center px-6 py-4 border-b border-white/20">
                 <span class="text-lg font-bold text-red-500">Services</span>
-                <button id="menu-close" class="p-2 rounded hover:bg-white/10 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
+                <button id="menu-close" class="p-2 rounded hover:bg-white/10 transition" aria-label="Close mobile menu">
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
             <div class="flex flex-col space-y-6 p-6">
-                <button onclick="scrollToSection('trading')"
-                    class="text-sm font-medium hover:text-red-400 transition">Jewellery Trading</button>
-                <button onclick="scrollToSection('caviar')"
-                    class="text-sm font-medium hover:text-red-400 transition">Premium Caviar</button>
-                <button onclick="scrollToSection('consultancy')"
-                    class="text-sm font-medium hover:text-red-400 transition">Business Consultancy</button>
-                <button onclick="scrollToSection('faq')"
-                    class="text-sm font-medium hover:text-red-400 transition">FAQ</button>
-                <button onclick="scrollToSection('contact')"
-                    class="text-sm font-medium hover:text-red-400 transition">Contact</button>
+                <a href="#trading" onclick="scrollToSection('trading'); return false;"
+                    class="text-sm font-medium hover:text-red-400 transition"
+                    aria-label="Navigate to Jewellery Trading section">Jewellery Trading</a>
+                <a href="#caviar" onclick="scrollToSection('caviar'); return false;"
+                    class="text-sm font-medium hover:text-red-400 transition"
+                    aria-label="Navigate to Premium Caviar section">Premium Caviar</a>
+                <a href="#consultancy" onclick="scrollToSection('consultancy'); return false;"
+                    class="text-sm font-medium hover:text-red-400 transition"
+                    aria-label="Navigate to Business Consultancy section">Business Consultancy</a>
+                <a href="#faq" onclick="scrollToSection('faq'); return false;"
+                    class="text-sm font-medium hover:text-red-400 transition"
+                    aria-label="Navigate to FAQ section">FAQ</a>
+                <a href="#contact" onclick="scrollToSection('contact'); return false;"
+                    class="text-sm font-medium hover:text-red-400 transition"
+                    aria-label="Navigate to Contact section">Contact</a>
             </div>
         </div>
 
-        <!-- Overlay (dim background) -->
+        <!-- Overlay -->
         <div id="overlay" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden z-40"></div>
     </header>
+
+    <!-- 🌍 Mobile Language Selector (Added aria-label) -->
+    <div class="md:hidden fixed bottom-4 right-4 z-[9999]">
+        <select id="lang-mobile" aria-label="Select language"
+            class="bg-white text-gray-800 border border-gray-300 rounded-md px-3 py-1.5 font-medium cursor-pointer focus:outline-none shadow-md">
+            <option value="">🌐 Lang</option>
+            <option value="en">EN</option>
+            <option value="ar">AR</option>
+            <option value="ru">RU</option>
+        </select>
+    </div>
+
+    <!-- Hidden Google Translate Widget -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- 🌐 Google Translate Script (Async defer for performance) -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ar,ru',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async
+        defer></script>
+
+    <!-- ⚙️ Enhanced Language Switch, Mobile Menu Toggle, and scrollToSection -->
+    <script>
+        let langChangeTimeout;
+        let isChanging = false;  // Guard flag to prevent recursion in handleChange
+        // Smooth scroll function (defined explicitly)
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        // Improved language change with better fallback
+        function changeLanguage(lang, attempt = 0) {
+            clearTimeout(langChangeTimeout);
+            langChangeTimeout = setTimeout(() => {
+                // First, try official Google Translate combo box
+                const translateCombo = document.querySelector('.goog-te-combo');
+                if (translateCombo) {
+                    translateCombo.value = lang;
+                    translateCombo.dispatchEvent(new Event('change', { bubbles: true }));
+                    console.log(`Language changed to ${lang} via combo box`);  // Debug log
+                    return;
+                }
+                // Fallback to iframe if combo not found
+                const iframe = document.querySelector("iframe.goog-te-menu-frame");
+                if (!iframe) {
+                    if (attempt < 10) {
+                        setTimeout(() => changeLanguage(lang, attempt + 1), 300);
+                        return;
+                    } else {
+                        // Ultimate fallback: Reload with lang param (server-side handling needed)
+                        console.warn(`Language switch failed after 10 attempts; reloading with ?lang=${lang}`);
+                        window.location.href = `${window.location.pathname}?lang=${lang}`;
+                        return;
+                    }
+                }
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                if (!iframeDoc) {
+                    console.warn('Cannot access iframe document (cross-origin issue)');
+                    return;
+                }
+                const langLinks = iframeDoc.querySelectorAll(".goog-te-menu2-item span.text");
+                let found = false;
+                langLinks.forEach(link => {
+                    const text = link.innerText.toLowerCase();
+                    if (
+                        (lang === "en" && text.includes("english")) ||
+                        (lang === "ar" && text.includes("arabic")) ||
+                        (lang === "ru" && text.includes("russian"))
+                    ) {
+                        link.click();
+                        found = true;
+                        console.log(`Language changed to ${lang} via iframe click`);  // Debug log
+                    }
+                });
+                if (!found) {
+                    console.warn(`No matching language link found for ${lang}; falling back to reload`);
+                    window.location.href = `${window.location.pathname}?lang=${lang}`;
+                }
+            }, 200); // Reduced debounce for better UX
+        }
+
+        // Mobile menu toggle functionality
+        function toggleMobileMenu(open) {
+            const mobileMenu = document.getElementById("mobile-menu");
+            const overlay = document.getElementById("overlay");
+            const menuIcon = document.getElementById("menu-icon");
+            const closeIcon = document.getElementById("close-icon");
+
+            if (open) {
+                mobileMenu.classList.remove("translate-x-full");
+                overlay.classList.remove("hidden");
+                menuIcon.style.display = "none";
+                closeIcon.style.display = "block";
+            } else {
+                mobileMenu.classList.add("translate-x-full");
+                overlay.classList.add("hidden");
+                menuIcon.style.display = "block";
+                closeIcon.style.display = "none";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Mobile menu handlers
+            const menuToggle = document.getElementById("menu-toggle");
+            const menuClose = document.getElementById("menu-close");
+            const overlay = document.getElementById("overlay");
+
+            menuToggle?.addEventListener("click", () => toggleMobileMenu(true));
+            menuClose?.addEventListener("click", () => toggleMobileMenu(false));
+            overlay?.addEventListener("click", () => toggleMobileMenu(false));
+
+            // Language handlers
+            const desktopLang = document.getElementById("lang-desktop");
+            const mobileLang = document.getElementById("lang-mobile");
+
+            const handleChange = e => {
+                if (isChanging) return;  // Prevent recursion
+                const value = e.target.value;
+                if (value) {
+                    isChanging = true;
+                    changeLanguage(value);
+
+                    // Optional safe reset (async to avoid triggering 'change' event)
+                    // Comment out if not needed; it hides the selected option visually
+                    setTimeout(() => {
+                        e.target.value = "";
+                        isChanging = false;
+                    }, 100);
+                } else {
+                    isChanging = false;
+                }
+            };
+
+            desktopLang?.addEventListener("change", handleChange);
+            mobileLang?.addEventListener("change", handleChange);
+        });
+    </script>
+    <style>
+        /* Hide Google Branding */
+        .goog-logo-link,
+        .goog-te-gadget,
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+
+        body {
+            top: 0 !important;
+        }
+
+        /* Ensure header doesn't overlap content on scroll */
+        body {
+            padding-top: 0;
+            /* Adjust if header height changes */
+        }
+    </style>
+
     <!-------Hamburger function-------------------->
     <script>
         const menuToggle = document.getElementById('menu-toggle');
