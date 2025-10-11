@@ -269,11 +269,11 @@
         </select>
     </div>
 
-    <!-- Hidden Google Translate Widget -->
+    <!-- Hidden Google Translate Widget
     <div id="google_translate_element" style="display:none;"></div>
 
     <!-- 🌐 Google Translate Script (Async defer for performance) -->
-    <script type="text/javascript">
+    <!-- <script type="text/javascript"> 
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
@@ -286,8 +286,8 @@
         defer></script>
 
     <!-- ⚙️ Enhanced Language Switch, Mobile Menu Toggle, and scrollToSection -->
-    <script>
-        let langChangeTimeout;
+    <!--<script>
+       // let langChangeTimeout;
         let isChanging = false;  // Guard flag to prevent recursion in handleChange
         // Smooth scroll function (defined explicitly)
         function scrollToSection(sectionId) {
@@ -402,8 +402,122 @@
             desktopLang?.addEventListener("change", handleChange);
             mobileLang?.addEventListener("change", handleChange);
         });
+    </script> -->
+    <!-- Hidden Google Translate Widget -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: "en",
+                includedLanguages: "en,ar,ru",
+                autoDisplay: false
+            }, "google_translate_element");
+        }
     </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async
+        defer></script>
+
+    <script>
+        let langChangeTimeout;
+        let isChanging = false;
+
+        // Smooth scroll
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+        }
+
+        // Language change
+        function changeLanguage(lang, attempt = 0) {
+            clearTimeout(langChangeTimeout);
+            langChangeTimeout = setTimeout(() => {
+                const combo = document.querySelector(".goog-te-combo");
+                if (combo) {
+                    combo.value = lang;
+                    combo.dispatchEvent(new Event("change", { bubbles: true }));
+                    return;
+                }
+                const iframe = document.querySelector("iframe.goog-te-menu-frame");
+                if (!iframe) {
+                    if (attempt < 10) return setTimeout(() => changeLanguage(lang, attempt + 1), 300);
+                    window.location.href = `${location.pathname}?lang=${lang}`;
+                    return;
+                }
+                const doc = iframe.contentDocument || iframe.contentWindow.document;
+                const links = doc?.querySelectorAll(".goog-te-menu2-item span.text") || [];
+                for (const l of links) {
+                    const t = l.innerText.toLowerCase();
+                    if ((lang === "en" && t.includes("english")) ||
+                        (lang === "ar" && t.includes("arabic")) ||
+                        (lang === "ru" && t.includes("russian"))) { l.click(); return; }
+                }
+                window.location.href = `${location.pathname}?lang=${lang}`;
+            }, 200);
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu(open) {
+            const m = document.getElementById("mobile-menu");
+            const o = document.getElementById("overlay");
+            const mi = document.getElementById("menu-icon");
+            const ci = document.getElementById("close-icon");
+            if (open) {
+                m.classList.remove("translate-x-full");
+                o.classList.remove("hidden");
+                mi.style.display = "none"; ci.style.display = "block";
+            } else {
+                m.classList.add("translate-x-full");
+                o.classList.add("hidden");
+                mi.style.display = "block"; ci.style.display = "none";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.getElementById("menu-toggle");
+            const menuClose = document.getElementById("menu-close");
+            const overlay = document.getElementById("overlay");
+
+            menuToggle?.addEventListener("click", () => toggleMobileMenu(true));
+            menuClose?.addEventListener("click", () => toggleMobileMenu(false));
+            overlay?.addEventListener("click", () => toggleMobileMenu(false));
+
+            const desktopLang = document.getElementById("lang-desktop");
+            const mobileLang = document.getElementById("lang-mobile");
+
+            const handleChange = e => {
+                if (isChanging) return;
+                const val = e.target.value;
+                if (val) {
+                    isChanging = true;
+                    changeLanguage(val);
+                    setTimeout(() => { e.target.value = ""; isChanging = false; }, 100);
+                }
+            };
+            desktopLang?.addEventListener("change", handleChange);
+            mobileLang?.addEventListener("change", handleChange);
+        });
+    </script>
+
     <style>
+        /* optional minimization instead of removal */
+        .goog-logo-link,
+        .goog-te-gadget {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+
+        body {
+            top: 0 !important;
+            padding-top: 0;
+        }
+    </style>
+
+    <!--<style>
         /* Hide Google Branding */
         .goog-logo-link,
         .goog-te-gadget,
@@ -420,10 +534,10 @@
             padding-top: 0;
             /* Adjust if header height changes */
         }
-    </style>
+    </style>-->
 
     <!-------Hamburger function-------------------->
-    <script>
+    <!--<script>
         const menuToggle = document.getElementById('menu-toggle');
         const menuClose = document.getElementById('menu-close');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -442,7 +556,7 @@
         menuToggle.addEventListener('click', openMenu);
         menuClose.addEventListener('click', closeMenu);
         overlay.addEventListener('click', closeMenu);
-    </script>
+    </script>-->
 
 
     <!-- ---------------------------------------Hero Section -------------------------------------------------------------------------->
