@@ -795,10 +795,6 @@ video {
   height: 2px;
 }
 
-.h-auto {
-  height: auto;
-}
-
 .h-screen {
   height: 100vh;
 }
@@ -827,16 +823,12 @@ video {
   width: 16rem;
 }
 
-.w-auto {
-  width: auto;
+.w-80 {
+  width: 20rem;
 }
 
 .w-full {
   width: 100%;
-}
-
-.w-80 {
-  width: 20rem;
 }
 
 .min-w-\[250px\] {
@@ -1186,10 +1178,6 @@ video {
 
 .to-primary\/95 {
   --tw-gradient-to: hsl(224 71% 36% / 0.95) var(--tw-gradient-to-position);
-}
-
-.to-primary {
-  --tw-gradient-to: hsl(224 71% 36%) var(--tw-gradient-to-position);
 }
 
 .object-contain {
